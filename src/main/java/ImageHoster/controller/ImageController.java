@@ -137,7 +137,7 @@ public class ImageController {
 
 		if (!isLoggedUSer) {
 			redirectAttributes.addAttribute("editError", error);
-			model.addAttribute("editError", "Only the owner of the image can edit the image");
+			model.addAttribute("editError", error);
 			redirectAttributes.addFlashAttribute("editError", error);
 			return "redirect:/images/" + image.getId() + "/" + image.getTitle();
 		} else {
