@@ -132,7 +132,7 @@ public class ImageController {
         updatedImage.setDate(new Date());
 
         imageService.updateImage(updatedImage);
-        return "redirect:/images/" + updatedImage.getTitle();
+        return "redirect:/images/" + updatedImage.getId() + "/" + updatedImage.getTitle();
     }
 
 
@@ -178,6 +178,7 @@ public class ImageController {
     private String convertTagsToString(List<Tag> tags) {
         StringBuilder tagString = new StringBuilder();
 
+        if(tags.size() > 0) {
         for (int i = 0; i <= tags.size() - 2; i++) {
             tagString.append(tags.get(i).getName()).append(",");
         }
@@ -186,5 +187,8 @@ public class ImageController {
         tagString.append(lastTag.getName());
 
         return tagString.toString();
+        }else {
+        	return "";
+        }
     }
 }
