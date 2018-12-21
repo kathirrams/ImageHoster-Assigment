@@ -39,8 +39,7 @@ public class CommentController {
 	// '/image/{imageId}/{imageTitle}'
 	@RequestMapping(value = "/image/{imageId}/{imageTitle}/comments", method = RequestMethod.POST)
 	public String addComment(@RequestParam("comment") String commentText, @PathVariable("imageId") Integer imageId,
-			@PathVariable("imageTitle") String imageTitle, Model model, HttpSession session,
-			final RedirectAttributes redirectAttributes)  throws IOException, IndexOutOfBoundsException, ArrayIndexOutOfBoundsException{
+			@PathVariable("imageTitle") String imageTitle, Model model, HttpSession session){
 		Image image = imageService.getImage(imageId);
 		String tags = convertTagsToString(image.getTags());
 		User loggedInuser = (User) session.getAttribute("loggeduser");
